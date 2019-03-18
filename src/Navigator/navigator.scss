@@ -1,0 +1,29 @@
+.navigator {
+    float: left;
+    width: 80px;
+    height: calc(100vh - 81px - 31px);
+    background-color: #2e3d44;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .kindOfLife {
+        width: 100%;
+        height: 20px;
+        background-color: antiquewhite;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    .kindOfLife:hover {
+    background-color: #D5B0C7;
+    transition: 0.3s;
+    cursor: pointer;
+    }
+
+    .active {
+        background-color: #D5B0C7;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+}

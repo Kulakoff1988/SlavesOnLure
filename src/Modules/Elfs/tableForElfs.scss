@@ -1,0 +1,68 @@
+.tables {
+    margin-left: 2px;
+    margin-top: 2px;
+    display: flex;
+
+    .elfsChoice {
+        width: 100px;
+        border-left: 1px solid black;
+        border-top: 1px solid black;
+        border-right: 1px solid black;
+        margin-right: 2px;
+    }
+    
+    .elfsChoice:hover {
+        background-color: #D5B0C7;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .active {
+        background-color: #D5B0C7;
+        border-left: 1.5px inset black;
+        border-top: 1.5px inset black;
+        border-right: 1.5px inset black;
+    }
+}
+
+.panelsForElfs {
+    width: 70vw;
+    flex-direction: column;
+    border: 1px solid black;
+    min-height: 70px;
+    margin-left: 2px;
+    padding-bottom: 2px;
+
+    .targetForElfs {
+        overflow: auto;
+        width: 70vw;
+        display: flex;
+        justify-content: flex-start;
+        min-height: 20px;
+        flex-wrap: wrap;
+
+        .user-card {
+            display: flex;
+            align-items: center;
+            width: 65vw;
+            flex-wrap: wrap;
+            clear: both;
+            min-height: 50px;
+            border-bottom: 1px solid #444440;
+            margin: 0 2px 1px;
+            overflow: hidden;
+
+            .template {
+                margin: 2px 5px;
+                width: 100px;
+            }
+        }
+    }
+
+    .formToAdd {
+        display: flex;
+        width: 100%;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+}
