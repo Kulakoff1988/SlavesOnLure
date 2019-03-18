@@ -8,6 +8,6 @@ const Navigator = new Lure.Content ({
     Name: `Navigator`,
     Target: `.body`,
     Content: `<div class="navigator">${resultString}</div>`
-})
+});
 
 module.exports = Navigator;

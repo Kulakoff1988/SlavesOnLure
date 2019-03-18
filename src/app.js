@@ -1,5 +1,5 @@
 Lure.Application.Run();
-require('/Navigator/navigator');
+require('./Navigator/navigator');
 require('./Modules/Elfs');
 require('./Modules/Gnomes');
 require('./Modules/Humans');

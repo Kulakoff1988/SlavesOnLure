@@ -34,6 +34,9 @@ gulp.task(`css`, function() {
 gulp.task(`app`, function() {
 	browserify(src.js)
 	.bundle()
+		.on(`error`, function (e) {
+			console.log(e.toString());
+        })
 	.pipe(source(`app.js`))
 	.pipe(gulp.dest(`./dist`))
 });
