@@ -1,13 +1,12 @@
 const Elfs = new Lure.Content ({
     Name: `Elfs`,
     Type: `toggleContent`,
-    Visible: true,
     Target: `.body`,
     Control: {
         Target: `#Elfs`
     },
     Content: `<div class="toggleContent"></div>`
-})
+});
 
 window.Elfs = Elfs;
 require('./Elfs/tableForElfs');

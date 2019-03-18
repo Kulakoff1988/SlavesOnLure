@@ -73,6 +73,6 @@ const PanelForElfs_1 = new Lure.Content ({
             this.Controller.Data[p.LineID].Comment = this._CommentForm.value;
         });
     }
-})
+});
 
 module.exports = PanelForElfs_1;

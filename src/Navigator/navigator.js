@@ -1,4 +1,4 @@
-const Kinds = require('../toggleKinds');
+const Kinds = require('../Data/toggleKinds');
 let resultString = ``;
 for (let kind of Kinds) {
     resultString += `<div class="kindOfLife" id="${kind}">${kind}</div>`

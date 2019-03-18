@@ -4,4 +4,31 @@
     overflow: hidden;
 }
 
+.gnomes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+    .heroView {
+        min-height: 10%;
+        width: 300px;
+        border: 1px solid black;
+        margin: 10px;
+
+        .forName {
+            width: 100%;
+            height: 15%;
+            border-bottom: 1px solid black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .l-button {
+                height: 25px;
+            }
+        }
+    }
+}
+
 @import './Elfs/tableForElfs';

@@ -1,4 +1,4 @@
-const ToggleContentTrolls = new Lure.Content ({
+const Trolls = new Lure.Content ({
     Name: `Trolls`,
     Type: `toggleContent`,
     Target: `.body`,
@@ -6,6 +6,6 @@ const ToggleContentTrolls = new Lure.Content ({
         Target: `#Trolls`
     },
     Content: `<div class="toggleContent"></div>`
-})
+});
 
-module.exports = ToggleContentTrolls;
+module.exports = Trolls;
