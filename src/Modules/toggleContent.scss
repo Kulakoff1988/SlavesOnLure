@@ -7,28 +7,118 @@
 .gnomes {
     display: flex;
     flex-direction: row;
+    align-content: flex-start;
     flex-wrap: wrap;
-    overflow: hidden;
+    height: calc(100vh - 81px - 31px);
+    width: 100%;
+    overflow: auto;
+    position: static;
+
+    .addButton {
+        order: 1000;
+        height: 300px;
+        width: 400px;
+        margin: 10px;
+        background-color: $colorForContent;
+
+        .l-button {
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            margin-left: auto;
+            background-color: $colorForContent;
+        }
+    }
 
     .heroView {
-        min-height: 10%;
-        width: 300px;
-        border: 1px solid black;
+        height: 300px;
+        width: 400px;
         margin: 10px;
+        display: flex;
+        flex-direction: column;
+        background-color: $colorForContent;
 
-        .forName {
+        .addHero {
+            margin: auto;
+
+            .l-button {
+                background: $colorForContent;
+                height: 50px;
+                width: 60px;
+                margin-bottom: 10px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .forCat {
+            background-color: $color2;
             width: 100%;
-            height: 15%;
+            height: 17%;
             border-bottom: 1px solid black;
             display: flex;
             justify-content: space-between;
             align-items: center;
 
+            .catColor {
+                width: 16px;
+                height: 16px;
+                margin-left: 5px;
+            }
+
+            .catName {
+                font-weight: bold;
+                color: $colorForText;
+            }
+
             .l-button {
-                height: 25px;
+                height: 30px;
+                width: 40px;
+                background: $color2;
+                margin: 5px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .catContent {
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+
+            .forSubCat {
+                display: flex;
+                flex-direction: column;
+
+                .heroString {
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 5px 10px;
+
+                    .heroName {
+                        height: 20px;
+                        float: left;
+                        margin-top: 5px;
+                    }
+
+                    .l-button {
+                        background: $colorForContent;
+                        color: $black;
+                        font-weight: bold;
+                        font-size: 15px;
+                        padding: 0;
+                    }
+                }
             }
         }
     }
 }
 
 @import './Elfs/tableForElfs';
+@import "./Gnomes/gnomes";

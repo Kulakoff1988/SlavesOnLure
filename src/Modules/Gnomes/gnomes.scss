@@ -1,0 +1,46 @@
+.addCatDialog {
+  top: calc(50vh - 100px);
+  left: calc(55vw - 350px);
+  width: 400px;
+  height: 20%;
+  background: $colorForText;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 0 60px $color5;
+
+  .title {
+    font-weight: bold;
+    font-size: 25px;
+    height: 40%;
+  }
+
+  form {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 40%;
+  }
+
+  .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    .btn-submit,
+    .btn-cancel {
+      align-self: flex-end;
+      margin-bottom: 5px;
+      margin-right: 5px;
+      background-color: $colorForText;
+      cursor: pointer;
+
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}

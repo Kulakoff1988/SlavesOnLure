@@ -2,7 +2,7 @@
     float: left;
     width: 80px;
     height: calc(100vh - 81px - 31px);
-    background-color: #2e3d44;
+    background-color: $color5;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -10,19 +10,19 @@
     .kindOfLife {
         width: 100%;
         height: 20px;
-        background-color: antiquewhite;
+        background-color: $colorForButtons;
         margin-top: 5px;
         text-align: center;
     }
 
     .kindOfLife:hover {
-    background-color: #D5B0C7;
+    background-color: $color2;
     transition: 0.3s;
     cursor: pointer;
     }
 
     .active {
-        background-color: #D5B0C7;
+        background-color: $color1;
         transition: 0.3s;
         cursor: pointer;
     }
