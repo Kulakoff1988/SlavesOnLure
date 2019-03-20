@@ -1,4 +1,5 @@
-.addCatDialog {
+.addCatDialog,
+.addHeroDialog {
   top: calc(50vh - 100px);
   left: calc(55vw - 350px);
   width: 400px;
@@ -8,7 +9,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  box-shadow: 0 0 60px $color5;
+  box-shadow: 0 30px 60px $color5;
 
   .title {
     font-weight: bold;
