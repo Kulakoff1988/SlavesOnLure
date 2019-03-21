@@ -41,6 +41,8 @@ const AddCatDialog = new Lure.Content ({
             };
             if (this._CatForm.value !== ``) {
                 this.Parent.Controller.Add(newCat);
+                this.Parent.State.ButtonList.push(newCat.Name);
+                this.Parent.Proto.Refresh();
             }
             this._CatForm.value = ``;
         };

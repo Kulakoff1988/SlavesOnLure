@@ -1,4 +1,7 @@
 const Categories = require('../Data/Categories');
+const FilterButtons = Categories.reduce((acc, item) => {
+    return [...acc, item.Name];
+}, []);
 const AddHeroDialog = require(`./Gnomes/GnomesAddHeroDialog`);
 
 const Gnomes = new Lure.Content ({
@@ -11,6 +14,14 @@ const Gnomes = new Lure.Content ({
         Target: `#Gnomes`
     },
     Content:    `<div class="gnomes">
+                    <div class="filter">
+                        <div class="filter-1">
+                        {{#each ButtonList}}
+                            <div class="filterButtons">{{$this}}</div>
+                        {{#endeach}}
+                        </div>
+                        <div class="filterButtons">All</div>
+                    </div>
                     <div class="addButton">
                         <button class="l-button" id="addCat"><img src="../img/icon-add.png"></button>
                     </div>
@@ -43,7 +54,12 @@ const Gnomes = new Lure.Content ({
                         </div>`
     },
 
+    State: {
+        ButtonList: FilterButtons
+    },
+
     Props() {
+        this.filterButtons = this.SelectAll(`.filterButtons`);
         this.SaveButton = this.Target.querySelector(`#btn-submit`);
         this.data = null;
         this.lineId = null;
@@ -64,6 +80,15 @@ const Gnomes = new Lure.Content ({
                 AddHeroDialog.NameFormRefresh();
             }
         };
+
+        this.AddEventListener(`click`, `.filterButtons`, (e) => {
+            if (e.currentTarget.innerText === `All`) {
+                this.Controller.Filter(null);
+            }
+            else {
+                this.Controller.Filter(el => el.Name === e.currentTarget.innerText);
+            }
+        });
 
         this.AddEventListener(`click`, `.btn-remove-cat`, (e, p) => {
             this.Controller.Remove(p.LineID);
