@@ -121,7 +121,6 @@ const Gnomes = new Lure.Content ({
             if (evt.keyCode === 13) {
                 this._SaveHero(this.data);
                 AddHeroDialog.Hide();
-                this.Refresh(this.lineId);
             }
         });
     }
