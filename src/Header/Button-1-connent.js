@@ -12,12 +12,8 @@ const Button_1_Content = new Lure.Content ({
         Target: ``,
         Data: MenuButtons,
         ListElement:    `<div class="menuString">
-                            <div class="menuName" data-rowid="{{$this.ID}}">{{$this.Name}}</div>
-                            <div class="subMenuString" data-rowid="{{$this.ID}}">
-                            {{#each SubMenu}}
-                                <div class="subMenuName">{{Name}}</div>
-                            {{#endeach}}
-                            </div>
+                            <div class="menuName" data-rowid="{{ID}}">{{Name}}</div>
+                            <div class="subMenuString" data-rowid="{{ID}}"></div>
                         </div>`
     },
 

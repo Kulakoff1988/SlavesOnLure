@@ -1,0 +1,49 @@
+.checkingBox {
+  float: left;
+  width: 100px;
+  height: calc(100vh - 81px - 31px);
+  background-color: $color5;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: white;
+
+  #targetForCheckingBox {
+    background-color: $color5;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: white;
+    width: 100%;
+
+    label {
+      height: 20px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    input[type=checkbox] { display: none; }
+
+    .pseudoCheckbox::before {
+      content: "\00A0";
+      display: inline-block;
+      box-sizing: border-box;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border: 2px solid #B0B0B0;
+      border-radius: 2px;
+      margin-right: 6px;
+      vertical-align: baseline;
+
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 16px;
+      font-weight: bold;
+      color: #808080;
+    }
+
+    input[type=checkbox]:checked + .pseudoCheckbox::before { content: "\9714"; }
+  }
+}

@@ -1,3 +1,13 @@
+const   regexForTemplate = new RegExp('\\b\\w+\\b(?=%)', 'g');
+
+        // menuTitle = (menuList, template) => {
+        //     const words = template.match(regexForTemplate);
+        //     for (let word of words) {
+        //         if (!user.hasOwnProperty(word)) user[word] = `Not specified`;
+        //     }
+        //     return user;
+        // };
+
 class TreeBuilder {
     constructor ({
                      Target = null,
@@ -6,7 +16,6 @@ class TreeBuilder {
                      Control = null
                  })
      {
-         console.log(Data);
         this.Target = document.querySelector(Target);
         this.Data = Data;
         this.Template = Template;
@@ -24,7 +33,7 @@ class TreeBuilder {
         const currentElement = document.createElement('div');
         currentElement.innerText = itemName;
         target.appendChild(currentElement);
-        // return target;
+        return target;
     }
 }
 

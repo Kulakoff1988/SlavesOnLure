@@ -9,54 +9,124 @@
     background-color: $color1;
     padding-top: 1px;
 
-    .menuButtons {
-      margin-top: 19px;
-      margin-left: 20px;
-      width: 300px;
-      height: 20px;
-      display: flex;
-      justify-content: space-around;
-      background: $colorForButtons;
+      #cssmenu {
+        padding: 0;
+        width: 300px;
+        margin-top: 10px;
+        margin-left: 20px;
+        height: 20px;
 
-      .headerButtons {
-        width: 100%;
-        cursor: pointer;
-        border: 0.5px solid black;
-        text-align: center;
-        position: relative;
-
-        .buttonName {
+        ul {
+          position: relative;
+          z-index: 597;
           height: 100%;
-        }
 
-        .subMenu {
-          display: flex;
-          flex-direction: column;
-          position: absolute;
-          top: 19.5px;
-          left: 0.5px;
-          width: 200px;
-
-          .triangle {
-            height: 0;
-            width: 0;
-            border: 10px solid transparent;
-            border-bottom: 10px solid $colorForButtons;
-            border-left: 10px solid $colorForButtons;
+          li {
+            float: left;
+            min-height: 1px;
+            vertical-align: middle;
+            border: 1px solid black;
           }
 
-          .button-1-content,
-          .button-2-content,
-          .button-3-content {
+          li.hover,
+          li:hover {
+            position: relative;
+            z-index: 599;
+            cursor: default;
+          }
 
-            .menuString {
-              border-bottom: 1px solid black;
-              background: $colorForButtons;
-              display: flex;
+          ul {
+            visibility: hidden;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 598;
+            width: 100%;
+
+            li {
+              float: none;
+              position: relative;
+              height: 20px;
+            }
+
+            ul {
+              top: 0;
+              left: auto;
+              right: -99.5%;
+            }
+
+            a {
+              border-top: 0 none;
+              line-height: 20px;
             }
           }
         }
+
+        a {
+          display: block;
+          text-decoration: none;
+          background:  $colorForContent;
+          font-size: 12px;
+          padding: 0 20px;
+        }
+
+        a:hover {
+          color: white;
+          background-color: $color4;
+        }
       }
-    }
+
+      #cssmenu ul li:hover > ul {
+        visibility: visible;
+      }
+
+      #cssmenu ul ul {
+        bottom: 0;
+        left: 0;
+      }
+      #cssmenu ul ul {
+        margin-top: 0;
+      }
+      #cssmenu ul ul li {
+        font-weight: normal;
+      }
+
+      #cssmenu > ul {
+        display: block;
+        height: 100%;
+      }
+
+      #cssmenu:after, #cssmenu ul:after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+
+      #cssmenu ul ul {
+        text-transform: none;
+        min-width: 190px;
+      }
+
+      #cssmenu > ul > li > a {
+        line-height: 20px;
+      }
+
+      #cssmenu ul ul li:hover > a {
+        background-color: $color4;
+        color: white;
+      }
+
+      #cssmenu ul ul li.has-sub > a:after {
+        content: '+';
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        margin-top: -8px;
+      }
+
+      #cssmenu ul li.has-sub > a:after {
+        content: '+';
+        margin-left: 5px;
+      }
   }
 }
