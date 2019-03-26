@@ -3,32 +3,32 @@ const CheckBoxList = [
         Name: `First`,
         Children: [
             {
-                Name: `SubFirst`
+                Name: `First.1`
             },
             {
-                Name: `SubSecond`
+                Name: `First.2`
             }]
     },
     {
         Name: `Second`,
         Children: [
             {
-                Name: `SubSecond`
+                Name: `Second.1`
             },
             {
-                Name: `SubSecond`,
+                Name: `Second.2`,
                 Children: [
                     {
-                        Name: `subSubSecond`
+                        Name: `Second.2.1`
                     },
                     {
-                        Name: `subSubSecond`,
+                        Name: `Second.2.1`,
                         Children: [
                             {
-                                Name: `subSubSubSecond`
+                                Name: `Second.2.1.1`
                             },
                             {
-                                Name: `subSubSubSecond`
+                                Name: `Second.2.1.2`
                             }
                         ]
                     }
@@ -40,23 +40,23 @@ const CheckBoxList = [
         Name: `Third`,
         Children: [
             {
-                Name: `SubThird`,
+                Name: `Third.1`,
                 Children: [
                     {
-                        Name: `subSubThird`,
+                        Name: `Third.1.1`,
                         Children: [
                             {
-                                Name: `subSubSubThird`
+                                Name: `Third.1.1.1`
                             },
                             {
-                                Name: `subSubSubThird`
+                                Name: `Third.1.1.2`
                             }
                         ]
                     }
                 ]
             },
             {
-                Name: `SubThird`,
+                Name: `Third.2`,
             }]
     },
 ];
