@@ -1,7 +1,8 @@
 Lure.Application.Run();
 require('./Header/Header');
 // require('./Navigator/navigator');
-require('./CheckingBox/checkingBox');
+require('./SideBar/checkingBox');
+// require('./SideBar/selectBox');
 require('./Modules/Elfs');
 require('./Modules/Gnomes');
 require('./Modules/Humans');

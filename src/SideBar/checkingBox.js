@@ -2,7 +2,8 @@ const   checkList = require('../Data/CheckBoxList'),
 
         childrenCheckBoxes = element => {
             const inputs = [];
-            const divs = element.closest(`div`).querySelectorAll('div');
+            console.log(element.closest(`div`).closest(`.checkBox`))
+            const divs = element.closest(`div`).closest(`.checkBox`).querySelectorAll('.inputContainer');
             for (let div of divs) {
                 inputs.push(div.querySelector('input'));
             }
@@ -40,8 +41,6 @@ const   checkList = require('../Data/CheckBoxList'),
             }
             else if (element.closest(`label`).closest(`div`).parentNode.id === `targetForCheckingBox`) {
                 if (!element.checked && !element.indeterminate) {
-                    console.log(closestInputParent(element));
-                    styleForChildrenInputs(element, `none`);
                 }
                 if (childrenCheckBoxes(element).every(input => input.checked === true)) {
                     element.indeterminate = false;
@@ -63,8 +62,6 @@ const   checkList = require('../Data/CheckBoxList'),
                 input.indeterminate = false;
                 input.checked = element.checked;
             });
-            const style = element.checked ? `flex` : `none`;
-            styleForChildrenInputs(element, style);
             parentStatus(element);
         };
 
@@ -78,27 +75,33 @@ const CheckingBox = new Lure.Content ({
         Target: `#targetForCheckingBox`,
         Data: checkList,
         ListElement:    `<div class="checkBox"  indeterminate>
-                            <label>
-                                <input type="checkbox">
-                                <span>{{Name}}</span>
-                            </label>
-                            {{#each Children}}
                             <div>
                                 <label>
                                     <input type="checkbox">
                                     <span>{{Name}}</span>
                                 </label>
+                            <div class="dropDown"><img src="./img/icon-minus.png"></div>
+                            </div>
+                            {{#each Children}}
+                            <div class="inputContainer">
+                                <label>
+                                    <input type="checkbox">
+                                    <span>{{Name}}</span>
+                                    <div class="dropDown"></div>
+                                </label>
                                 {{#each Children}}
-                                <div>
+                                <div class="inputContainer">
                                     <label>
                                         <input type="checkbox">
                                         <span>{{Name}}</span>
+                                        <div class="dropDown"></div>
                                     </label>
                                     {{#each Children}}
-                                    <div>
+                                    <div class="inputContainer">
                                         <label>
                                             <input type="checkbox">
                                             <span>{{Name}}</span>
+                                            <div class="dropDown"></div>
                                         </label>
                                     </div>
                                     {{#endeach}}
@@ -116,9 +119,9 @@ const CheckingBox = new Lure.Content ({
                 changeHandler(input);
             };
         }
-        this._MainCheckBoxes = this.SelectAll(`.checkBox`);
-        for (let checkBox of this._MainCheckBoxes) {
-            styleForChildrenInputs(checkBox, `none`);
+        this._ViewButtons = this.SelectAll('img');
+        for (let button of this._ViewButtons) {
+            styleForChildrenInputs(button, `none`);
         }
     }
 });
