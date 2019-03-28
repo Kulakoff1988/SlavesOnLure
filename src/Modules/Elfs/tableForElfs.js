@@ -6,6 +6,6 @@ const TableForElfs = new LureContent ({
                     <div class="elfsChoice" id="elfsChoice-2">30-45 years</div>
                     <div class="elfsChoice" id="elfsChoice-3">45+ years</div>
                 </div>`
-})
+});
 
 module.exports = TableForElfs;

@@ -1,35 +1,57 @@
 const   checkList = require('../Data/CheckBoxList'),
+        selectList = require('../Data/SelectList');
 
-        childrenCheckBoxes = element => {
-            const inputs = [];
-            console.log(element.closest(`div`).closest(`.checkBox`))
-            const divs = element.closest(`div`).closest(`.checkBox`).querySelectorAll('.inputContainer');
-            for (let div of divs) {
-                inputs.push(div.querySelector('input'));
-            }
-            return inputs;
-        },
+        addBranch = (tree, marginLeft = 0) => {
+            if (!tree) return ``;
+            return html = tree.reduce((acc, item) => {
+                return acc +    `<div class="containerForChecking" style="margin-left: ${marginLeft}px">
+                                    <div class="forLabel">
+                                        <label>
+                                            <input type="checkbox">
+                                            <span>${item.Name}</span>
+                                        </label>
+                                        <div class="hideImg">
+                                        ${item.Children ? '<img src="./img/icon-minus.png" data-type="1" class="l-button">' : ``}
+                                        </div>
+                                    </div>
+                                    <div class="nextCheckbox">${addBranch(item.Children, marginLeft + 5)}</div>
+                                </div>`}, ``);
+        };
+
+        childrenCheckboxes = element => {
+            const inputs = element.closest(`.forLabel`).closest(`.containerForChecking`).querySelector('.nextCheckbox').querySelectorAll(`input`);
+            return Array.from(inputs);
+        };
 
         closestInputParent = element => {
             if (!!element.closest(`label`)) {
-                return element.closest(`label`).closest(`div`).parentNode.querySelector(`label`).querySelector(`input`);
+                return element.closest(`label`).closest(`div`).parentNode.parentNode.parentNode.querySelector(`label`).querySelector(`input`);
             }
-        },
-
-        styleForChildrenInputs = (element, style) => {
-            Array.from(element.closest(`div`).children)
-                .filter(el => el !== element.closest(`div`).firstElementChild)
-                .map(el => el.style.display = style);
-        },
+        };
 
         parentStatus = element => {
-            if (element.closest(`label`).closest(`div`).parentNode.id !== `targetForCheckingBox`) {
-                if (childrenCheckBoxes(closestInputParent(element)).every(input => input.checked === true)) {
+            if (element.parentNode.parentNode.parentNode.parentNode.id === `checkingBox`) {
+                if (!element.checked && !element.indeterminate) {
+                }
+                if (childrenCheckboxes(element).every(input => input.checked === true)) {
+                    element.indeterminate = false;
+                    element.checked = true;
+                }
+                else if (childrenCheckboxes(element).some(input => input.checked === true)) {
+                    element.indeterminate = true;
+                }
+                else {
+                    element.indeterminate = false;
+                    element.checked = false;
+                }
+            }
+            else {
+                if (childrenCheckboxes(closestInputParent(element)).every(input => input.checked === true)) {
                     closestInputParent(element).indeterminate = false;
                     closestInputParent(element).checked = true;
                     return parentStatus(closestInputParent(element));
                 }
-                else if (childrenCheckBoxes(closestInputParent(element)).some(input => input.checked === true)) {
+                else if (childrenCheckboxes(closestInputParent(element)).some(input => input.checked === true)) {
                     closestInputParent(element).indeterminate = true;
                     return parentStatus(closestInputParent(element));
                 }
@@ -39,26 +61,10 @@ const   checkList = require('../Data/CheckBoxList'),
                     parentStatus(closestInputParent(element));
                 }
             }
-            else if (element.closest(`label`).closest(`div`).parentNode.id === `targetForCheckingBox`) {
-                if (!element.checked && !element.indeterminate) {
-                }
-                if (childrenCheckBoxes(element).every(input => input.checked === true)) {
-                    element.indeterminate = false;
-                    element.checked = true;
-                }
-                else if (childrenCheckBoxes(element).some(input => input.checked === true)) {
-                    element.indeterminate = true;
-                }
-                else {
-                    element.indeterminate = false;
-                    element.checked = false;
-                    childrenCheckBoxes(element).map(input => input.checked = false);
-                }
-            }
-        },
+        };
 
         changeHandler = element => {
-            childrenCheckBoxes(element).map(input => {
+            childrenCheckboxes(element).map(input => {
                 input.indeterminate = false;
                 input.checked = element.checked;
             });
@@ -68,62 +74,53 @@ const   checkList = require('../Data/CheckBoxList'),
 const CheckingBox = new Lure.Content ({
     Name: `CheckingBox`,
     Target: `.body`,
-    Content:    `<div class="checkingBox">
-                    <div id="targetForCheckingBox"></div>
-                </div>`,
-    ControllerConfig: {
-        Target: `#targetForCheckingBox`,
-        Data: checkList,
-        ListElement:    `<div class="checkBox"  indeterminate>
-                            <div>
-                                <label>
-                                    <input type="checkbox">
-                                    <span>{{Name}}</span>
-                                </label>
-                            <div class="dropDown"><img src="./img/icon-minus.png"></div>
-                            </div>
-                            {{#each Children}}
-                            <div class="inputContainer">
-                                <label>
-                                    <input type="checkbox">
-                                    <span>{{Name}}</span>
-                                    <div class="dropDown"></div>
-                                </label>
-                                {{#each Children}}
-                                <div class="inputContainer">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span>{{Name}}</span>
-                                        <div class="dropDown"></div>
-                                    </label>
-                                    {{#each Children}}
-                                    <div class="inputContainer">
-                                        <label>
-                                            <input type="checkbox">
-                                            <span>{{Name}}</span>
-                                            <div class="dropDown"></div>
-                                        </label>
-                                    </div>
-                                    {{#endeach}}
-                                </div>
-                                {{#endeach}}
-                            </div>
-                            {{#endeach}}
-                        </div>`
+    Content: `<div id="checkingBox"></div>`,
+    State: {
+      Tree: selectList
+    },
+
+    GetSet: {
+        get Tree() {
+          return this.State.Tree;
+        },
+        set Tree(tree) {
+            this.State.Tree = tree;
+            this.Content.innerHTML = addBranch(tree);
+            this._TreeHandler();
+        }
+    },
+
+    Methods() {
+        this._TreeHandler = function () {
+            this._InputButtons = this.SelectAll('input');
+            for (let input of this._InputButtons) {
+                input.onchange = () => {
+                    changeHandler(input);
+                };
+            }
+            this._ShowHandler = this.SelectAll(`img`);
+            for (let button of this._ShowHandler) {
+                button.addEventListener(`click`, () => {
+                    const elementsToHide = button.parentNode.parentNode.parentNode.querySelector(`.nextCheckbox`);
+                    if (button.dataset[`type`] === `1`) {
+                        button.dataset[`type`] = 2;
+                        button.src = `./img/icon-plus.png`;
+                    }
+                    else {
+                        button.dataset[`type`] = 1;
+                        button.src = `./img/icon-minus.png`;
+                    }
+                    elementsToHide.style.display = elementsToHide.style.display === `none` ? `block` : `none`;
+                });
+            }
+        };
     },
 
     AfterBuild() {
-        this._InputButtons = this.SelectAll('input');
-        for (let input of this._InputButtons) {
-            input.onchange = () => {
-                changeHandler(input);
-            };
-        }
-        this._ViewButtons = this.SelectAll('img');
-        for (let button of this._ViewButtons) {
-            styleForChildrenInputs(button, `none`);
-        }
+        this.Content.innerHTML = addBranch(this.State.Tree);
+        this._TreeHandler();
     }
 });
 
+window.CheckingBox = CheckingBox;
 module.exports = CheckingBox;

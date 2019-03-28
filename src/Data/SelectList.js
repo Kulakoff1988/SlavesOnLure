@@ -1,4 +1,6 @@
-const SelectList = {
+const SelectList = [{
+    Name: `Country`,
+    ID: 1,
     Title: `Country`,
     Children: [
         {
@@ -181,6 +183,6 @@ const SelectList = {
             ]
         }
     ]
-};
+}];
 
 module.exports = SelectList;

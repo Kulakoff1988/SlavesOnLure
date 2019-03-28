@@ -22,13 +22,13 @@ const CheckBoxList = [
                         Name: `Second.2.1`
                     },
                     {
-                        Name: `Second.2.1`,
+                        Name: `Second.2.2`,
                         Children: [
                             {
-                                Name: `Second.2.1.1`
+                                Name: `Second.2.2.1`
                             },
                             {
-                                Name: `Second.2.1.2`
+                                Name: `Second.2.2.2`
                             }
                         ]
                     }
