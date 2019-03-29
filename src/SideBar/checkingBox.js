@@ -31,8 +31,6 @@ const   checkList = require('../Data/CheckBoxList'),
 
         parentStatus = element => {
             if (element.parentNode.parentNode.parentNode.parentNode.id === `checkingBox`) {
-                if (!element.checked && !element.indeterminate) {
-                }
                 if (childrenCheckboxes(element).every(input => input.checked === true)) {
                     element.indeterminate = false;
                     element.checked = true;
@@ -55,11 +53,9 @@ const   checkList = require('../Data/CheckBoxList'),
                     closestInputParent(element).indeterminate = true;
                     return parentStatus(closestInputParent(element));
                 }
-                else {
-                    closestInputParent(element).indeterminate = false;
-                    closestInputParent(element).checked = false;
-                    parentStatus(closestInputParent(element));
-                }
+                closestInputParent(element).indeterminate = false;
+                closestInputParent(element).checked = false;
+                parentStatus(closestInputParent(element));
             }
         };
 
