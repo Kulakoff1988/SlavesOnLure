@@ -1,188 +1,94 @@
 const SelectList = [{
-    Name: `Country`,
+    Name: `Библиотека №1`,
     ID: 1,
-    Title: `Country`,
+    Title: `МСК`,
     Children: [
         {
-            Name: `Russia`,
+            Name: `Ворота`,
             ID: 1,
-            Title: `Cities`,
+            Title: `GTS`,
             Children: [
                 {
-                    Name: `Moscow`,
-                    ID: 1,
-                    Title: `Shops`,
-                    Children: [
-                        {
-                            Name: `Da ladno`,
-                            ID: 1,
-                            Title: `Department`,
-                            Children: [
-                                {
-                                    Name: `Toys`,
-                                    ID: 1,
-                                },
-                                {
-                                    Name: `Food`,
-                                    ID: 2
-                                }
-                            ]
-                        },
-                        {
-                            Name: `Blyat'`,
-                            ID: 2
-                        }
-                    ]
+                    Name: `Северные ворота`,
+                    Title: `N-GTS`,
+                    ID: 1
                 },
                 {
-                    Name: `Rostov`,
-                    ID: 2,
-                    Title: `Shops`,
-                    Children: [
-                        {
-                            Name: `Prison`,
-                            ID: 1
-                        },
-                        {
-                            Name: `Police`,
-                            ID: 2
-                        }
-                    ]
-                },
-                {
-                    Name: `Tagil`,
-                    ID: 3,
-                    Title: `Shops`,
-                    Children: [
-                        {
-                            Name: `Darkness`,
-                            ID: 1
-                        },
-                        {
-                            Name: `Hopeless`,
-                            ID: 2
-                        }
-                    ]
+                    Name: `Южные ворота`,
+                    Title: `S-GTS`,
+                    ID: 2
                 }
             ]
         },
         {
-            Name: `China`,
+            Name: `Станции книговыдачи`,
             ID: 2,
-            Title: `Cities`,
+            Title: `STN`,
             Children: [
                 {
-                    Name: `Beijing`,
-                    ID: 1,
-                    Title: `Shops`,
-                    Children: [
-                        {
-                            Name: `Imperator`,
-                            ID: 1
-                        },
-                        {
-                            Name: `Capital`,
-                            ID: 2,
-                            Title: `Department`,
-                            Children: [
-                                {
-                                    Name: `Flags`,
-
-                                    ID: 1
-                                },
-                                {
-                                    Name: `Books`,
-                                    ID: 2
-                                }
-                            ]
-                        }
-                    ]
+                    Name: `Восточная станция`,
+                    Title: `E-STN`,
+                    ID: 1
                 },
                 {
-                    Name: `Hong Kong`,
-                    ID: 2,
-                    Title: `Shops`,
-                    Children: [
-                        {
-                            Name: `Money`,
-                            ID: 1
-                        },
-                        {
-                            Name: `GB`,
-                            ID: 2
-                        }
-                    ]
-                },
-                {
-                    Name: `Shanghai`,
-                    ID: 3,
-                    Title: `Shops`,
-                    Children: [
-                        {
-                            Name: `Made in China`,
-                            ID: 1
-                        },
-                        {
-                            Name: `Design by Apple`,
-                            ID: 2
-                        }
-                    ]
+                    Name: `Западная станция`,
+                    Title: `W-STN`,
+                    ID: 2
                 }
             ]
-        },
-        {
-            Name: `USA`,
-            ID: 3,
-            Title: `Cities`,
-            Children: [
-                {
-                    Name: `Washington`,
-                    ID: 1,
-                    Title: `Shops`,
-                    Children: [
-                        {
-                            Name: `White house`,
-                            ID: 1
-                        },
-                        {
-                            Name: `Second floor`,
-                            ID: 2
-                        }
-                    ]
-                },
-                {
-                    Name: `New York`,
-                    ID: 2,
-                    Title: `Shops`,
-                    Children: [
-                        {
-                            Name: `Walmart`,
-                            ID: 1
-                        },
-                        {
-                            Name: `Burgers`,
-                            ID: 2
-                        }
-                    ]
-                },
-                {
-                    Name: `Boston`,
-                    ID: 3,
-                    Title: `Shops`,
-                    Children: [
-                        {
-                            Name: `Massachusetts`,
-                            ID: 1
-                        },
-                        {
-                            Name: `People`,
-                            ID: 2
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-}];
+        }]
+},
+    {
+        Name: `Библиотека №2`,
+        ID: 1,
+        Title: `ДБН`,
+        Children: [
+            {
+                Name: `Ворота`,
+                ID: 1,
+                Title: `GTS`,
+                Children: [
+                    {
+                        Name: `Северные ворота`,
+                        ID: 1,
+                        Title: `N-GTS`,
+                        Children: [
+                            {
+                                Name: `North-1`,
+                                Title: `N-GTS1`,
+                                ID: 1
+                            },
+                            {
+                                Name: `North-2`,
+                                Title: `N-GTS2`,
+                                ID: 2
+                            }
+                        ]
+                    },
+                    {
+                        Name: `Южные ворота`,
+                        Title: `S-GTS`,
+                        ID: 2
+                    }
+                ]
+            },
+            {
+                Name: `Станции книговыдачи`,
+                ID: 2,
+                Title: `STN`,
+                Children: [
+                    {
+                        Name: `Восточная станция`,
+                        Title: `W-STN`,
+                        ID: 1
+                    },
+                    {
+                        Name: `Западная станция`,
+                        Title: `E-STN`,
+                        ID: 2
+                    }
+                ]
+            }]
+    }];
 
 module.exports = SelectList;

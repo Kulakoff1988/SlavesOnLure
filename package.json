@@ -4,7 +4,7 @@
   "description": "slaves project on Lure",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ViewStatus": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "KulakovAlex",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/runtime": "^7.1.2",
     "babelify": "^10.0.0",
+    "bootstrap": "^4.3.1",
     "browserify": "^16.2.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^2.1.0",
@@ -31,6 +32,8 @@
     "gulp-string-replace": "^1.1.2",
     "gulp-uglify": "^1.2.0",
     "gulp-watch": "^5.0.1",
+    "jquery": "^1.9.1",
+    "popper.js": "^1.14.7",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }

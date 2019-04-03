@@ -102,7 +102,6 @@ const Gnomes = new Lure.Content ({
             const domForRemove = e.currentTarget.closest('.heroString');
             const parentForRemove = domForRemove.closest(`.forSubCat`);
             parentForRemove.removeChild(domForRemove);
-            // this.Controller.Refresh(p.LineID);
         });
 
         this.AddEventListener(`click`, `#addHero`, (e, p) => {

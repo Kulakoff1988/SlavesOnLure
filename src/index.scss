@@ -39,7 +39,14 @@ body {
     background: $color5;
 }
 
+
+@media (max-width: 768px) {
+    .body {
+        flex-direction: column;
+    }
+}
+
 @import "./Header/header";
 //@import './Navigator/navigator';
 @import './SideBar/checkingBox';
-@import './Modules/toggleContent';
+@import './Modules/dataDash';

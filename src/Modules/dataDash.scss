@@ -1,0 +1,14 @@
+.dataDash {
+  height: calc(100vh - 81px - 31px);
+  width: 100%;
+
+  .equipStatus {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 50px;
+    width: 300px;
+    border: 2px inset;
+    margin: 20px auto;
+  }
+}
