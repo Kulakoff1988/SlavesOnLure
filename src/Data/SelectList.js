@@ -1,11 +1,11 @@
 const SelectList = [{
     Name: `Библиотека №1`,
-    ID: 1,
+    ID: 100,
     Title: `МСК`,
     Children: [
         {
             Name: `Ворота`,
-            ID: 1,
+            ID: 101,
             Title: `GTS`,
             Children: [
                 {
@@ -22,7 +22,7 @@ const SelectList = [{
         },
         {
             Name: `Станции книговыдачи`,
-            ID: 2,
+            ID: 201,
             Title: `STN`,
             Children: [
                 {
@@ -40,12 +40,12 @@ const SelectList = [{
 },
     {
         Name: `Библиотека №2`,
-        ID: 1,
+        ID: 100,
         Title: `ДБН`,
         Children: [
             {
                 Name: `Ворота`,
-                ID: 1,
+                ID: 101,
                 Title: `GTS`,
                 Children: [
                     {
@@ -74,7 +74,7 @@ const SelectList = [{
             },
             {
                 Name: `Станции книговыдачи`,
-                ID: 2,
+                ID: 201,
                 Title: `STN`,
                 Children: [
                     {

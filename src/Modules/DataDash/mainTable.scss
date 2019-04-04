@@ -1,0 +1,43 @@
+.mainTable {
+  width: 95%;
+  flex: 1;
+  margin: 0 2vw;
+  border-radius: 5px;;
+  background: antiquewhite;
+  margin-bottom: 2.5vh;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+
+  .tables {
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    font-family: 'Arimo', sans-serif;
+    font-style: italic;
+    height: 3vh;
+
+    .featureChoice {
+      width: 100px;
+      margin-right: 2px;
+      text-align: center;
+      border-radius: 5px;
+      line-height: 3vh;
+    }
+
+    .featureChoice:hover {
+      background-color: #C0602F;
+      color: white;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .active {
+      background-color: #C0602F;
+      color:white;
+    }
+  }
+}
+
+@import './MainTable/tableSheets';

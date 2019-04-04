@@ -9,22 +9,22 @@ const Header = new Lure.Content ({
                         </ul>
                     </div>
                 </div>`,
-    ControllerConfig: {
-        Target: `#targetForDropDown`,
-        Data: menuList,
-        ListElement:    `<li class='has-sub '><a href='#'>{{Name}}</a>
-                                  <ul>
-                                  {{#each SubMenu}}
-                                    <li class='has-sub '><a href='#'>{{Name}}</a>
-                                        <ul>
-                                            {{#each SubMenu}}
-                                                <li><a href='#'>{{Name}}</a></li>
-                                            {{#endeach}}
-                                        </ul>
-                                  {{#endeach}}
-                                  </ul>
-                               </li>`
-    },
+    // ControllerConfig: {
+    //     Target: `#targetForDropDown`,
+    //     Data: menuList,
+    //     ListElement:    `<li class='has-sub '><a href='#'>{{Name}}</a>
+    //                               <ul>
+    //                               {{#each SubMenu}}
+    //                                 <li class='has-sub '><a href='#'>{{Name}}</a>
+    //                                     <ul>
+    //                                         {{#each SubMenu}}
+    //                                             <li><a href='#'>{{Name}}</a></li>
+    //                                         {{#endeach}}
+    //                                     </ul>
+    //                               {{#endeach}}
+    //                               </ul>
+    //                            </li>`
+    // },
 
     // Controller: {
     //     TreeBuilder: new Lure.Controller.TreeBuilder ({

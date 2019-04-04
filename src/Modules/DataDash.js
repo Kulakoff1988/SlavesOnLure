@@ -10,8 +10,8 @@ const DataDash = new Lure.Content ({
                     </div>
                 </div>`,
     State: {
-        Name: `Все системы в норме`,
-        Status: `./img/icon-allChecked.png`
+        Name: `ВСЕ СИСТЕМЫ В НОРМЕ`,
+        Status: "./img/icon-allChecked.png"
     },
 
     Methods() {
@@ -23,5 +23,7 @@ const DataDash = new Lure.Content ({
     }
 });
 
+// require('./DataDash/MainTable');
+require('./DataDash/EquipDashboard');
 window.DataDash = DataDash;
 module.exports = DataDash;

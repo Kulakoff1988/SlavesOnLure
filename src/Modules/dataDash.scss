@@ -1,14 +1,49 @@
 .dataDash {
-  height: calc(100vh - 81px - 31px);
-  width: 100%;
+  height: calc(100vh - 82px);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 
   .equipStatus {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    height: 50px;
-    width: 300px;
-    border: 2px inset;
+    justify-content: flex-start;
+    height: 70px;
+    width: 60%;
     margin: 20px auto;
+    border-radius: 5px;
+    position: relative;
+    background: antiquewhite;
+
+    span {
+      font-family: 'Arimo', sans-serif;
+      font-style: italic;
+    }
+  }
+
+  .equipDashboard {
+    width: calc(100% - 5vw);
+    flex: 1;
+    margin: 0 2vw;
+    border-radius: 5px;;
+    background: antiquewhite;
+    margin-bottom: 2.5vh;
+    display: flex;
+    align-self: center;
+    flex-wrap: wrap;
+    padding: 20px;
+
+    .forEquipInfo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 30px;
+
+      .iconName {
+        margin-top: 10px;
+      }
+    }
   }
 }
+
+@import './DataDash/mainTable';

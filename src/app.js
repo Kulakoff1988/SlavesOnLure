@@ -11,3 +11,4 @@ require('./SideBar/checkingBox');
 // require('./Modules/Protos');
 // require('./Modules/Trolls');
 require('./Modules/DataDash');
+require('./Modules/Features');

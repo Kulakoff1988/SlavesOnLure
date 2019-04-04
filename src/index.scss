@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700');
+@import url('https://fonts.googleapis.com/css?family=Arimo:400,700i&subset=cyrillic,cyrillic-ext');
+
 
 $color1: #899CAB;
 $color2: #688188;
@@ -14,13 +16,16 @@ $black: black;
 body {
     margin: 0;
     padding: 0;
-    font-family: 'PT Sans';
-    font-size: 15px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     .body {
         display: flex;
+
+        div {
+            font-family: 'Arimo', sans-serif;
+        }
     }
 
     .footer {
@@ -29,6 +34,11 @@ body {
         background-color: $color4;
         border-top: $color8 1px solid;
         z-index: 1;
+    }
+
+    .l-period_picker {
+        left: 30%;
+        top: 20%;
     }
 }
 
@@ -42,7 +52,40 @@ body {
 
 @media (max-width: 768px) {
     .body {
-        flex-direction: column;
+
+        #checkingBox {
+            width: 25vw;
+
+            .desktop {
+                display: none;
+            }
+
+            .tab {
+                display: block;
+            }
+        }
+
+        div{
+            font-size: 11px;
+        }
+
+        .forLabel:hover {
+            background: antiquewhite;;
+        }
+
+        .dataDash {
+            width: 100%;
+
+            .equipDashboard {
+                width: 60vw;
+            }
+
+            img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
     }
 }
 
@@ -50,3 +93,4 @@ body {
 //@import './Navigator/navigator';
 @import './SideBar/checkingBox';
 @import './Modules/dataDash';
+@import './Modules/features';
