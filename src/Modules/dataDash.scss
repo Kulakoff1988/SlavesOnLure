@@ -1,49 +1,98 @@
 .dataDash {
-  height: calc(100vh - 82px);
   display: flex;
   flex: 1;
   flex-direction: column;
+  padding-right: 10px;
+  padding-left: 10px;
+  justify-content: space-between;
 
-  .equipStatus {
+  .forEqAndFeat{
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    height: 70px;
-    width: 60%;
-    margin: 20px auto;
-    border-radius: 5px;
-    position: relative;
-    background: antiquewhite;
+    justify-content: space-between;
 
-    span {
-      font-family: 'Arimo', sans-serif;
-      font-style: italic;
+    .equipStatus {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      justify-content: flex-start;
+      height: 70px;
+      border-radius: 5px;
+      background: antiquewhite;
+
+      span {
+        font-family: 'Arimo', sans-serif;
+        font-style: italic;
+      }
+    }
+
+    .forTabDisplay {
+      height: 70px;
+
+      .filter {
+        padding: 0;
+      }
     }
   }
 
-  .equipDashboard {
-    width: calc(100% - 5vw);
+  .equipDashboardWrapper {
+    margin-top: 10px;
     flex: 1;
-    margin: 0 2vw;
-    border-radius: 5px;;
-    background: antiquewhite;
-    margin-bottom: 2.5vh;
-    display: flex;
-    align-self: center;
-    flex-wrap: wrap;
-    padding: 20px;
 
-    .forEquipInfo {
+    .equipDashboard {
+      height: 100%;
+      border-radius: 5px;;
+      background: antiquewhite;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      margin: 0 30px;
 
-      .iconName {
-        margin-top: 10px;
+      .tables {
+        margin: 5px;
+        display: flex;
+        justify-content: space-around;
+        align-items: stretch;
+        font-family: 'Arimo', sans-serif;
+        font-style: italic;
+
+        .featureChoice {
+          flex: auto;
+          text-align: center;
+          border-radius: 5px;
+          line-height: 3vh;
+        }
+
+        .featureChoice:hover {
+          background-color: #C0602F;
+          color: white;
+          transition: 0.3s;
+          cursor: pointer;
+        }
+
+        .active {
+          background-color: #C0602F;
+          color:white;
+        }
+      }
+
+      .forChart {
+        width: 98%;
+        height: 90%;
+      }
+
+      .monitoring {
+      }
+
+      .forEquipInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 30px;
+
+        .iconName {
+          margin-top: 10px;
+        }
       }
     }
   }
 }
 
-@import './DataDash/mainTable';
+@import 'DataDash/equipDashboard';

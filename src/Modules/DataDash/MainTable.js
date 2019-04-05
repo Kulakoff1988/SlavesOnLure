@@ -4,9 +4,7 @@ const MainTable = new Lure.Content ({
     Content:    `<div class="mainTable">
                     <div class="tables">
                         <div class="featureChoice" id="stats">Статистика</div>
-                        <div class="featureChoice" id="events">События</div>
-                        <div class="featureChoice" id="settings">Настройки</div>
-                        <div class="featureChoice" id="options">Опции</div>
+                        <div class="featureChoice" id="monitoring">Мониторинг</div>
                     </div>
                 </div>`
 });

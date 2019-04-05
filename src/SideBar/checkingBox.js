@@ -8,6 +8,10 @@ const   selectList = require('../Data/SelectList'),
             1: statusPaths.connected,
             2: statusPaths.attention,
             3: statusPaths.stop
+        },
+        imgPaths = {
+            Hide: `./img/icon-dropDownBorder.png`,
+            Show: `./img/icon-dropDownBorderWhite.png`
         };
 
 addBranch = tree => {
@@ -21,7 +25,7 @@ addBranch = tree => {
                             <div class="flex-100 desktop">${item.Name}</div>
                             <div class="flex-100 tab">${item.Title}</div>
                             <div class="hideImg">
-                               ${item.Children ? '<img src="./img/icon-dropDownBorder.png" data-type="1" class="hide">' : ``}
+                               ${item.Children ? `<img src=${imgPaths.Hide} data-type="1" class="hide">` : ``}
                             </div>
                         </div>
                      <div class="nextCheckbox hidden" style="padding-left: 10px">${addBranch(item.Children)}</div>
@@ -71,12 +75,14 @@ const CheckingBox = new Lure.Content ({
                 if (sibling.querySelector(`.l-button`) !== currentButton && sibling.dataset[`children`] && siblingIcon.dataset[`type`] === `2`) {
                     sibling.querySelector(`.nextCheckbox`).classList.remove(`visible`);
                     siblingIcon.dataset[`type`] = `1`;
+                    siblingIcon.src = imgPaths.Hide;
                     siblingIcon.classList.toggle(`show`);
                     siblingIcon.classList.toggle(`hide`);
                 }
             }
             if (handlerIcon.dataset[`type`] === `1`) {
                 handlerIcon.dataset[`type`] = 2;
+                handlerIcon.src = imgPaths.Show;
                 currentButton.classList.add(`showColorParent`);
                 toggleElements.classList.add(`visible`);
                 for (let child of toggleElements.children) {
@@ -91,6 +97,7 @@ const CheckingBox = new Lure.Content ({
             }
             else {
                 handlerIcon.dataset[`type`] = 1;
+                handlerIcon.src = imgPaths.Hide;
                 for (let sibling of siblingToHide) {
                     sibling.querySelector(`.forLabel`).classList.remove(`showColorParent`);
                 }

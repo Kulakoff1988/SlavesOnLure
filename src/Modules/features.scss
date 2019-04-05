@@ -1,8 +1,5 @@
 .features {
   width: 200px;
-  height: calc(95vh - 51px - 31px);
-  margin-top: 20px;
-  margin-right: 20px;
   border-radius: 5px;
   background: antiquewhite;
   display: flex;
@@ -30,3 +27,5 @@
     transition: 0.3s;
   }
 }
+
+@import "Features/featuresButtons";
