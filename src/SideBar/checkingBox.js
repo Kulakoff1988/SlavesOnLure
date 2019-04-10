@@ -12,13 +12,16 @@ const   selectList = require('../Data/SelectList'),
         imgPaths = {
             Hide: `./img/icon-dropDownBorder.png`,
             Show: `./img/icon-dropDownBorderWhite.png`
+        },
+        objectStats = string => {
+            return string.split(', ')
         };
 
 addBranch = tree => {
     if (!tree) return ``;
-    return html = tree.reduce((acc, item) => {
+    return tree.reduce((acc, item) => {
         return acc + `<div class="containerForChecking" ${item.Children ? `data-children="true"` : ``}>
-                        <div class="forLabel l-button">
+                        <div class="forLabel l-button" data-objectdata="${item.Name}, ${item.ID}">
                             <div class="status" data-status="1">
                                <img src=${statusPaths.connected}>
                             </div>
@@ -58,6 +61,7 @@ const CheckingBox = new Lure.Content ({
 
         this.GetEquipStatus = function (status) {
             DataDash.ViewStatus(status);
+            FeaturesButtons.ViewStatus(status);
         };
     },
 
@@ -66,8 +70,10 @@ const CheckingBox = new Lure.Content ({
         this.AddEventListener(`click`, `.l-button`, (e) => {
             const currentButton = e.currentTarget;
             const handlerIcon = this._ShowLevelIcon(currentButton);
-            handlerIcon.classList.toggle(`show`);
-            handlerIcon.classList.toggle(`hide`);
+            if (handlerIcon) {
+                handlerIcon.classList.toggle(`show`);
+                handlerIcon.classList.toggle(`hide`);
+            }
             const toggleElements = currentButton.parentNode.querySelector(`.nextCheckbox`);
             const siblingToHide = currentButton.parentNode.parentNode.children;
             for (let sibling of siblingToHide) {
@@ -80,35 +86,37 @@ const CheckingBox = new Lure.Content ({
                     siblingIcon.classList.toggle(`hide`);
                 }
             }
-            if (handlerIcon.dataset[`type`] === `1`) {
-                handlerIcon.dataset[`type`] = 2;
-                handlerIcon.src = imgPaths.Show;
-                currentButton.classList.add(`showColorParent`);
-                toggleElements.classList.add(`visible`);
-                for (let child of toggleElements.children) {
-                    child.querySelector(`.forLabel`).classList.add(`showColorChildren`);
-                }
-                for (let sibling of siblingToHide) {
-                    if (sibling.parentNode !== this.Content) {
-                        sibling.querySelector(`.forLabel`).classList.add(`showColorParent`);
+            if (handlerIcon) {
+                if (handlerIcon.dataset[`type`] === `1`) {
+                    handlerIcon.dataset[`type`] = 2;
+                    handlerIcon.src = imgPaths.Show;
+                    currentButton.classList.add(`showColorParent`);
+                    toggleElements.classList.add(`visible`);
+                    for (let child of toggleElements.children) {
+                        child.querySelector(`.forLabel`).classList.add(`showColorChildren`);
+                    }
+                    for (let sibling of siblingToHide) {
+                        if (sibling.parentNode !== this.Content) {
+                            sibling.querySelector(`.forLabel`).classList.add(`showColorParent`);
+                        }
                     }
                 }
-
-            }
-            else {
-                handlerIcon.dataset[`type`] = 1;
-                handlerIcon.src = imgPaths.Hide;
-                for (let sibling of siblingToHide) {
-                    sibling.querySelector(`.forLabel`).classList.remove(`showColorParent`);
+                else {
+                    handlerIcon.dataset[`type`] = 1;
+                    handlerIcon.src = imgPaths.Hide;
+                    for (let sibling of siblingToHide) {
+                        sibling.querySelector(`.forLabel`).classList.remove(`showColorParent`);
+                    }
+                    for (let child of toggleElements.children) {
+                        child.classList.remove(`showColorChildren`);
+                    }
+                    toggleElements.classList.remove(`visible`);
                 }
-                for (let child of toggleElements.children) {
-                    child.classList.remove(`showColorChildren`);
-                }
-                toggleElements.classList.remove(`visible`);
             }
             const status = {
-                equipName: currentButton.querySelector(`.flex-100`).innerText,
-                equipStatus: statusDictionary[currentButton.querySelector(`.status`).dataset[`status`]]
+                equipName: objectStats(currentButton.dataset[`objectdata`])[0],
+                equipStatus: statusDictionary[currentButton.querySelector(`.status`).dataset[`status`]],
+                equipID: objectStats(currentButton.dataset[`objectdata`])[1]
             };
             this.GetEquipStatus(status);
         });

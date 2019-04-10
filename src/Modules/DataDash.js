@@ -20,7 +20,7 @@ const DataDash = new Lure.Content ({
 
     Methods() {
         this.ViewStatus = function (status) {
-            this.State.Name = status.equipName;
+            this.State.Name = `${status.equipName}:`;
             this.State.Status = status.equipStatus;
             this.Proto.Refresh();
         }

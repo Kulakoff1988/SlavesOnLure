@@ -16,7 +16,7 @@
       flex: 1;
       justify-content: flex-start;
       height: 70px;
-      border-radius: 5px;
+      //border-radius: 5px;
       background: antiquewhite;
 
       span {
@@ -40,7 +40,7 @@
 
     .equipDashboard {
       height: 100%;
-      border-radius: 5px;;
+      //border-radius: 5px;
       background: antiquewhite;
       display: flex;
       flex-direction: column;
@@ -56,7 +56,7 @@
         .featureChoice {
           flex: auto;
           text-align: center;
-          border-radius: 5px;
+          //border-radius: 5px;
           line-height: 3vh;
         }
 
@@ -73,13 +73,54 @@
         }
       }
 
-      .forChart {
+      .chart {
         width: 98%;
         height: 90%;
+        display: flex;
+        flex-direction: column;
+        }
       }
 
       .monitoring {
-      }
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+        flex: 1;
+
+        .colorGradient {
+          height: 20px;
+          background: #00c100;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 5px;
+        }
+
+        .timeStep {
+          display: flex;
+          justify-content: space-between;
+
+          .step {
+            flex: 1;
+            text-align: center;
+          }
+        }
+
+        .chartInfo {
+          padding: 10px;
+          flex: 1;
+          display: flex;
+
+          .chart {
+            align-self: center;
+            flex: 1;
+
+            .l-chart {
+            }
+          }
+
+          .activityInfo {
+          }
+        }
 
       .forEquipInfo {
         display: flex;

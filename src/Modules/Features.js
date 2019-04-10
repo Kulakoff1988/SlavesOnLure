@@ -10,7 +10,13 @@ const Feature = new Lure.Content ({
                 </div>`,
     AfterBuild() {
         this._PeriodPicker = new Lure.PeriodPicker({
-                Target: `.forPeriodPicker`
+                Target: `.forPeriodPicker`,
+                OnConfirm: function () {
+
+                },
+            // AutoConfirm: true,
+            isTimePicker: true,
+            ForbiddenDates: [new Date()]
             });
     }
 });

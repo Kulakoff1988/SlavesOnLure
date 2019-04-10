@@ -14,21 +14,7 @@ const EquipDashboard = new Lure.Content ({
                             <div class="featureChoice l-button" id="monitoring">Мониторинг</div>
                         </div>
                     </div>
-                </div>`,
-    // AfterBuild() {
-    //     this.AddEventListener(`click`, `#stats`, () => {
-    //         this.Select(`.forChart`).classList.add(`show`);
-    //         this.Select(`.monitoring`).classList.remove(`show`);
-    //         this.Select(`#stats`).classList.add(`active`);
-    //         this.Select(`#monitoring`).classList.remove(`active`);
-    //     });
-    //     this.AddEventListener(`click`, `#monitoring`, () => {
-    //         this.Select(`.forChart`).classList.remove(`show`);
-    //         this.Select(`.monitoring`).classList.add(`show`);
-    //         this.Select(`#stats`).classList.remove(`active`);
-    //         this.Select(`#monitoring`).classList.add(`active`);
-    //     });
-    // }
+                </div>`
 });
 
 require('./EquipDashboard/Chart');

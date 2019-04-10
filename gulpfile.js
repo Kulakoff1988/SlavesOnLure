@@ -45,6 +45,6 @@ gulp.task(`watcher`, function() {
 	gulp.watch(src.html, [`html`]);
 	gulp.watch(`./src/**/*.scss`, [`css`]);
 	gulp.watch(`./src/**/*.js`, [`app`])
-})
+});
 
 gulp.task(`default`, [`html`, `css`, `app`, `watcher`]);

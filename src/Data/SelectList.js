@@ -1,11 +1,11 @@
 const SelectList = [{
     Name: `Библиотека №1`,
-    ID: 100,
+    ID: `Lib`,
     Title: `Б-№1`,
     Children: [
         {
             Name: `Ридеры/Планшеты`,
-            ID: 101,
+            ID: `Reader`,
             Title: `Rd/Tb`,
             Children: [
                 {
@@ -22,7 +22,7 @@ const SelectList = [{
         },
         {
             Name: `ПКС-ворота`,
-            ID: 201,
+            ID: `Gates`,
             Title: `Gts`,
             Children: [
                 {
@@ -39,7 +39,7 @@ const SelectList = [{
         },
         {
             Name: `Станции самостоятельного обслуживания`,
-            ID: 201,
+            ID: `SSS`,
             Title: `SSS`,
             Children: [
                 {
@@ -56,7 +56,7 @@ const SelectList = [{
         },
         {
             Name: `Станции самостоятельного возврата`,
-            ID: 201,
+            ID: `SRS`,
             Title: `SRS`,
             Children: [
                 {
@@ -73,7 +73,7 @@ const SelectList = [{
         },
         {
             Name: `Станции SMART-BOX`,
-            ID: 201,
+            ID: `SBX`,
             Title: `SMB`,
             Children: [
                 {
@@ -90,7 +90,7 @@ const SelectList = [{
         },
         {
             Name: `Умные полки`,
-            ID: 201,
+            ID: `SmartShelf`,
             Title: `SS`,
             Children: [
                 {
@@ -108,12 +108,12 @@ const SelectList = [{
     },
     {
         Name: `Библиотека №2`,
-        ID: 100,
+        ID: `Lib`,
         Title: `Б-№2`,
         Children: [
             {
                 Name: `Ридеры/Планшеты`,
-                ID: 101,
+                ID: `Reader`,
                 Title: `Rd/Tb`,
                 Children: [
                     {
@@ -130,7 +130,7 @@ const SelectList = [{
             },
             {
                 Name: `ПКС-ворота`,
-                ID: 201,
+                ID: `Gates`,
                 Title: `Gts`,
                 Children: [
                     {
@@ -147,7 +147,7 @@ const SelectList = [{
             },
             {
                 Name: `Станции самостоятельного обслуживания`,
-                ID: 201,
+                ID: `SSS`,
                 Title: `SSS`,
                 Children: [
                     {
@@ -164,7 +164,7 @@ const SelectList = [{
             },
             {
                 Name: `Станции самостоятельного возврата`,
-                ID: 201,
+                ID: `SRS`,
                 Title: `SRS`,
                 Children: [
                     {
@@ -181,7 +181,7 @@ const SelectList = [{
             },
             {
                 Name: `Станции SMART-BOX`,
-                ID: 201,
+                ID: `SBX`,
                 Title: `SMB`,
                 Children: [
                     {
@@ -198,7 +198,7 @@ const SelectList = [{
             },
             {
                 Name: `Умные полки`,
-                ID: 201,
+                ID: `SmartShelf`,
                 Title: `SS`,
                 Children: [
                     {

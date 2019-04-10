@@ -1,23 +1,36 @@
+const   Buttons = require('../../Data/EquipStats'),
+        data = [1, 2, 8, 4, 5, 7, 4, 5, 15, 20, 14, 19, 17, 15, 15, 13, 11, 18, 19, 16, 12, 10, 14, 16].reverse();
+
 const FeaturesButtons = new Lure.Content ({
     Name: `FeaturesButtons`,
     Target: `.forButtons`,
     Content:    `<div class="featuresButtons">
-                    {{#each Buttons}}
-                        {{#each value}}
-                            <div class="f-button">{{$this}}</div>
-                        {{#endeach}}
+                    <div class="equipName">{{Name}}</div>
+                    <div class="f-buttons">
+                    {{#each CurrentButtons}}
+                        <div class="f-button l-button">{{$this}}</div>
                     {{#endeach}}
+                    </div>
                 </div>`,
     State: {
-        Buttons: [
-            { id: `Reader`, value: [`Количество чтений`]},
-            { id: `Gates`, value: [`Количество срабатываний RFID-датчиков`, `Счётчик посетителей`]},
-            { id: `SSS`, value: [`Количество выданных книг`, `Количество возвращенных книг`, `Количество читательских сессий`, `Количество печатей чека`, `Количество продления книг`]},
-            { id: `SRS`, value: [`Количество возвращенных книг`, `Количество читательских сессий`, `Количество печатей чека`, `Количество продления книг`]},
-            { id: `SBX`, value: [`Количество возвращенных книг`, `Количество читательских сессий`, `Количество печатей чека`, `Количество продления книг`]},
-            { id: `SmartShelf`, value: [`Количество возвратов на полку`, `Количество книг на полке`, `Количество изъятий книг`, `Количество выданных книг`, `Количество возвращенных книг`, `Количество читательских сессий`, `Количество печатей чека`, `Количество продления книг`]}
-        ]
+        Name: `Выберите модуль`,
+        CurrentButtons: []
+    },
+
+    Methods() {
+        this.ViewStatus = function (status) {
+            this.State.Name = `${status.equipName}:`;
+            this.State.CurrentButtons = Buttons.find(el => el.id === status.equipID) ? Buttons.find(el => el.id === status.equipID).value : this.State.CurrentButtons;
+            this.Proto.Refresh();
+        }
+    },
+
+    AfterBuild() {
+        this.AddEventListener(`click`, `.f-button`, e => {
+            Chart.SetData(data);
+        });
     }
 });
 
+window.FeaturesButtons = FeaturesButtons;
 module.exports = FeaturesButtons;
