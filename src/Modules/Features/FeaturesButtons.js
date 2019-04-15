@@ -28,6 +28,11 @@ const FeaturesButtons = new Lure.Content ({
     AfterBuild() {
         this.AddEventListener(`click`, `.f-button`, e => {
             Chart.SetData(data);
+            api.Devisces_Get(-1, {
+                Then: res => {
+                    console.log(res);
+                }
+            });
         });
     }
 });

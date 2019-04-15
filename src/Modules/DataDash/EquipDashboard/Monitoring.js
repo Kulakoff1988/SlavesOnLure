@@ -32,6 +32,13 @@ const Monitoring = new Lure.Content ({
                     </div>
                 </div>`,
 
+    Methods() {
+        this.SetData = data => {
+            this._ActivityStats.Series[0].Data = data;
+            this._ActivityStats.Redraw();
+        };
+    },
+
     AfterBuild() {
         this.Select(`.timeStep`).innerHTML = timeScale.reduce((acc, item) => {
             return acc + `<div class="step">${item}</div>`
@@ -63,7 +70,7 @@ const Monitoring = new Lure.Content ({
                         Colors: ["#61A878", "#A56C60", "#9E9960", "#608AAB"],
                         // Type: 'ring',
                         Width: 22,
-                        AngleStart: -90,
+                        AngleStart: 180,
                     }
                 ],
         });
