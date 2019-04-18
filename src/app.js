@@ -1,4 +1,5 @@
 Lure.Application.Run();
+api.Login(`Admin`, `pass2root`);
 require('./Header/Header');
 // require('./Navigator/navigator');
 require('./SideBar/checkingBox');

@@ -43,7 +43,6 @@ let Login = new Lure.Content({
                           <div><input class="textbox l-textbox textbox-email" type="email" placeholder="exapmle@host.org"></div>
                           <button class="button l-button btn-restore-pass">Отправить</button>    
                         </div>
-                      
                       </div>`,
             Props: function(){
                 this.ButtonSendRestore = this.Select('.btn-restore-pass');

@@ -1,19 +1,18 @@
-const {GoogleCharts} = require('google-charts');
-
-// GoogleCharts.load(drawChart);
-//
-// function drawChart() {
-//
-//     // Standard google charts functionality is available as GoogleCharts.api after load
-//     const data = GoogleCharts.api.visualization.arrayToDataTable([
-//         ['Chart thing', 'Chart amount'],
-//         ['Lorem ipsum', 60],
-//         ['Dolor sit', 22],
-//         ['Sit amet', 18]
-//     ]);
-//     const pie_1_chart = new GoogleCharts.api.visualization.PieChart(document.querySelector(`.monitoring`));
-//     pie_1_chart.draw(data);
-// }
+const statusGradient = data => {
+    const parent = document.createElement(`div`);
+    return data.reduce((acc, item) => {
+        const child = document.createElement(`div`);
+        if (item.status) {
+            child.classList.add(item.status);
+            parent.appendChild(child);
+        }
+        else {
+            child.classList.add(`inactive`);
+            parent.appendChild(child);
+        }
+        return acc;
+    }, parent);
+};
 
 const Monitoring = new Lure.Content ({
     Name: `Monitoring`,
@@ -34,9 +33,30 @@ const Monitoring = new Lure.Content ({
 
     Methods() {
         this.SetData = data => {
-            this._ActivityStats.Series[0].Data = data;
+            const pieData = hourData => {
+                const labels = Array.from(hourData.reduce((acc, item) => {
+                    acc.add(item.label);
+                    return acc;
+                }, new Set));
+                return labels.reduce((acc, item) => {
+                    return ({...acc, [item]: data.filter(el => el.label === item).length});
+                },{});
+            };
+            const pieColor = Array.from(data.reduce((acc, item) => {
+                acc.add(item.color);
+                return acc;
+            }, new Set()));
+            this._ActivityStats.Series[0].Labels.Data = Object.keys(pieData(data));
+            this._ActivityStats.Series[0].Data = Object.values(pieData(data));
+            this._ActivityStats.Series[0].Colors = pieColor;
             this._ActivityStats.Redraw();
         };
+
+        this.SetGradient = data => {
+            this.Gradient = this.Select(`.colorGradient`);
+            children = statusGradient(data);
+            this.Gradient.innerHTML = children.innerHTML;
+        }
     },
 
     AfterBuild() {
@@ -68,9 +88,9 @@ const Monitoring = new Lure.Content ({
                         },
                         Data: [10, 10, 10, 10],
                         Colors: ["#61A878", "#A56C60", "#9E9960", "#608AAB"],
-                        // Type: 'ring',
-                        Width: 22,
-                        AngleStart: 180,
+                        Type: 'ring',
+                        Width: 200,
+                        AngleStart: -90,
                     }
                 ],
         });

@@ -89,10 +89,34 @@
 
         .colorGradient {
           height: 20px;
-          background: #00c100;
           display: flex;
           justify-content: space-between;
           margin-bottom: 5px;
+          align-items: stretch;
+
+          div {
+            flex: 1;
+          }
+
+          .inactive {
+            background: $inactive;
+          }
+
+          .noErrors {
+            background: $noErrors;
+          }
+
+          .moreSuccess {
+            background: $moreSuccess;
+          }
+
+          .moreErrors {
+            background: $moreErrors;
+          }
+
+          .noSuccess {
+            background: $noSuccess;
+          }
         }
 
         .timeStep {

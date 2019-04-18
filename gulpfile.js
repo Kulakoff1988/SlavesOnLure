@@ -15,7 +15,7 @@ const   gulp = require('gulp'),
 	    include = require("gulp-include"),
 		watch = require('gulp-watch'),
 		src = {
-			html: [`./src/index.html`],
+			html: [`./src/index.html`, `./src/auth.html`],
 			css: [`./src/index.scss`],
 			js: [`./src/app.js`]
 		};
