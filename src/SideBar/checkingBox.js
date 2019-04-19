@@ -13,6 +13,15 @@ const   statusPaths = {
             Hide: `./img/icon-dropDownBorder.png`,
             Show: `./img/icon-dropDownBorderWhite.png`
         },
+        typeDict = {
+            Lib: 0,
+            Reader: 1,
+            GTS: 2,
+            SSS: 3,
+            SRC: 4,
+            SBX: 5,
+            SmartShelf: 6
+        };
         objectStats = string => {
             return string.split(', ')
         };
@@ -69,7 +78,7 @@ const CheckingBox = new Lure.Content ({
 
     AfterBuild() {
         this.Load.Show();
-        api.Devisces_Get(-1, {
+        api.Devisces_Get(-1, -1, {
             Then: res => {
                 const data = [{
                     Name: `Библиотека №1`,
@@ -96,7 +105,7 @@ const CheckingBox = new Lure.Content ({
                         {
                             Name: `ПКС-ворота`,
                             ID: `Gates`,
-                            Title: `Gts`,
+                            Title: `GTS`,
                             Children: [
                                 {
                                     Name: `Ворота-1`,
@@ -190,9 +199,9 @@ const CheckingBox = new Lure.Content ({
                                 Title: `Rd/Tb`,
                                 Children: [
                                     {
-                                        Name: `Точка-1`,
+                                        Name: res[2].Name,
                                         Title: `Pnt1`,
-                                        ID: 1
+                                        ID: res[2].ID
                                     },
                                     {
                                         Name: `Точка-2`,
@@ -204,7 +213,7 @@ const CheckingBox = new Lure.Content ({
                             {
                                 Name: `ПКС-ворота`,
                                 ID: `Gates`,
-                                Title: `Gts`,
+                                Title: `GTS`,
                                 Children: [
                                     {
                                         Name: `Ворота-1`,
@@ -337,12 +346,65 @@ const CheckingBox = new Lure.Content ({
                     toggleElements.classList.remove(`visible`);
                 }
             }
+
+            currentButton.classList.add(`chosen`);
+            const otherButtons = this.SelectAll(`.l-button`);
+            for (let otherButton of otherButtons) {
+                if (otherButton !== currentButton) {
+                    otherButton.classList.remove(`chosen`);
+                }
+            }
+
             const status = {
                 equipName: objectStats(currentButton.dataset[`objectdata`])[0],
                 equipStatus: statusDictionary[currentButton.querySelector(`.status`).dataset[`status`]],
                 equipID: objectStats(currentButton.dataset[`objectdata`])[1]
             };
             this.GetEquipStatus(status);
+
+            const hasChildren = !!currentButton.parentNode.dataset[`children`];
+            const deviceID = hasChildren ? -1 : status.equipID;
+            const typeID = hasChildren ? typeDict[status.equipID] : -1;
+            api.Devisces_Data_Get(deviceID, typeID, {
+                Then: res => {
+                    res.map(el => {
+                        if (el.Err_Count === 0) {
+                            el.status = `noErrors`;
+                            el.label = `Работает без ошибок`;
+                            el.color = `#00FF43`;
+                        }
+                        if (el.OK_Count > el.Err_Count) {
+                            el.status = `moreSuccess`;
+                            el.label = `Есть ошибки`;
+                            el.color = `#30BE56`;
+                        }
+                        if (el.OK_Count < el.Err_Count) {
+                            el.status = `moreErrors`;
+                            el.label = `Требует отладки`;
+                            el.color = `#FF9500`;
+                        }
+                        if (el.OK_Count === 0) {
+                            el.status = `noSuccess`;
+                            el.label = `Не работает`;
+                            el.color = `#FF2300`;
+                        }
+                    });
+                    const result = [];
+                    for (let i = 0; i < 24; i++) {
+                        if (res.find(el => el.HourValue === i)) {
+                            const currentData = res.find(el => el.HourValue === i);
+                            result.push(currentData);
+                        }
+                        else {
+                            result.push({status: `inactive`, label: `Не активно`, color: `#4D4D4D`});
+                        }
+                    }
+                    Monitoring.SetGradient(result);
+                    Monitoring.SetPieData(result);
+                    Monitoring.SetLogData(result);
+                    Chart.SetData(result);
+                }
+            });
         });
     }
 });

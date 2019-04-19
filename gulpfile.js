@@ -15,9 +15,10 @@ const   gulp = require('gulp'),
 	    include = require("gulp-include"),
 		watch = require('gulp-watch'),
 		src = {
-			html: [`./src/index.html`, `./src/auth.html`],
+			html: [`./src/index.html`],
 			css: [`./src/index.scss`],
-			js: [`./src/app.js`]
+			js: [`./src/app.js`],
+			api: [`./src/api/api.js`]
 		};
 
 gulp.task(`html`, function() {
@@ -41,10 +42,15 @@ gulp.task(`app`, function() {
 	.pipe(gulp.dest(`./dist`))
 });
 
+gulp.task(`api`, function() {
+        gulp.src(src.api)
+        .pipe(gulp.dest(`./dist`))
+});
+
 gulp.task(`watcher`, function() {
 	gulp.watch(src.html, [`html`]);
 	gulp.watch(`./src/**/*.scss`, [`css`]);
-	gulp.watch(`./src/**/*.js`, [`app`])
+	gulp.watch(`./src/**/*.js`, [`app`]);
 });
 
-gulp.task(`default`, [`html`, `css`, `app`, `watcher`]);
+gulp.task(`default`, [`html`, `css`, `app`, `api`, `watcher`]);

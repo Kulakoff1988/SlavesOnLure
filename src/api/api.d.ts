@@ -47,15 +47,12 @@ class web_HistoryMasterGet_Result{
   LibraryRegionID?: number;
 }
 
-class Devices_Table{
+class Devices_TableDTO{
   ID: number;
-  DateCreated: Date;
   Name: string;
-  CFG1: number[];
-  CFG2: number[];
 }
 
-class Device_Table_Data{
+class Devices_Table_DataDTO{
   ID: number;
   DeviceID: number;
   DateValue: Date;
@@ -93,7 +90,7 @@ interface ApiTS {
   StaticContent(content:string, Handlers?: ApiTSHandlersCallbacks<Blob>): Promise<Blob>;
   StaticContent2(content2:string, Handlers?: ApiTSHandlersCallbacks<Blob>): Promise<Blob>;
   Cache_GetMasterHistoryLast(LastID:number, Handlers?: ApiTSHandlersCallbacks<web_HistoryMasterGet_Result[]>): Promise<web_HistoryMasterGet_Result[]>;
-  Devisces_Get(DeviceID:number, Handlers?: ApiTSHandlersCallbacks<Devices_Table[]>): Promise<Devices_Table[]>;
-  Devisces_Data_Get(DeviceID:number, Handlers?: ApiTSHandlersCallbacks<Device_Table_Data[]>): Promise<Device_Table_Data[]>;
+  Devisces_Get(DeviceID:number, DeviceTypeID:number, Handlers?: ApiTSHandlersCallbacks<Devices_TableDTO[]>): Promise<Devices_TableDTO[]>;
+  Devisces_Data_Get(DeviceID:number, DeviceTypeID:number, Handlers?: ApiTSHandlersCallbacks<Devices_Table_DataDTO[]>): Promise<Devices_Table_DataDTO[]>;
 }
 

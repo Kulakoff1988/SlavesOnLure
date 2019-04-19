@@ -12,6 +12,10 @@
     display: flex;
     flex-direction: column;
 
+    .chosen {
+      background: #00782D;
+    }
+
     .nextCheckbox {
       overflow: hidden;
       height: 0;

@@ -19,7 +19,7 @@ LegendName = n => {
 const Chart = new Lure.Content({
     Target:`.equipDashboard`,
     Type: `info`,
-    // Visible: true,
+    Visible: true,
     Control: {
         Target: `#stats`
     },
@@ -54,26 +54,16 @@ const Chart = new Lure.Content({
                     </div>`
             }
         });
-        api.Devisces_Data_Get(1, {
-            Then: res => {
-                const data = [];
-                for (let hourData of res) {
-                    data.push(hourData.HourValue);
-                }
-                if (res.length < 24) {
-                    for (let i = 0; i < 24 - res.length; i++) {
-                        data.push(0);
-                    }
-                }
-                this.chart.Options.Series[0].Data = data;
-                this.chart.Redraw();
-            },
-        });
     },
 
     Methods () {
         this.SetData = function (data) {
-            this.chart.Options.Series[0].Data = data;
+            const result = data.reduce((acc, item) => {
+                acc.push(item.Read_Count ? item.Read_Count : 0);
+                return acc;
+            }, []);
+            console.log(result);
+            this.chart.Options.Series[0].Data = result;
             this.chart.Redraw();
         };
     }

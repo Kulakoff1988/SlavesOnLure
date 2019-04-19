@@ -310,25 +310,27 @@ let api = {
     },
     /**
       @param {number}DeviceID
+      @param {number}DeviceTypeID
       @param {ApiTSHandlersCallbacks} [Handlers]
-      @return {Promise<Devices_Table[]>} 
+      @return {Promise<Devices_TableDTO[]>} 
     */            
-    Devisces_Get: function(DeviceID, Handlers)         
+    Devisces_Get: function(DeviceID, DeviceTypeID, Handlers)         
     {                                            
                                    
                       
-        return api.call(api.remote_call_promise('Devisces_Get',  {DeviceID:DeviceID}, false), Handlers);     
+        return api.call(api.remote_call_promise('Devisces_Get',  {DeviceID:DeviceID, DeviceTypeID:DeviceTypeID}, false), Handlers);     
     },
     /**
       @param {number}DeviceID
+      @param {number}DeviceTypeID
       @param {ApiTSHandlersCallbacks} [Handlers]
-      @return {Promise<Device_Table_Data[]>} 
+      @return {Promise<Devices_Table_DataDTO[]>} 
     */            
-    Devisces_Data_Get: function(DeviceID, Handlers)         
+    Devisces_Data_Get: function(DeviceID, DeviceTypeID, Handlers)         
     {                                            
                                    
                       
-        return api.call(api.remote_call_promise('Devisces_Data_Get',  {DeviceID:DeviceID}, false), Handlers);     
+        return api.call(api.remote_call_promise('Devisces_Data_Get',  {DeviceID:DeviceID, DeviceTypeID:DeviceTypeID}, false), Handlers);     
     },
 }
 

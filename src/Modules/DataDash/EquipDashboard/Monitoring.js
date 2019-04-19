@@ -18,7 +18,7 @@ const Monitoring = new Lure.Content ({
     Name: `Monitoring`,
     Target: `.equipDashboard`,
     Type: `info`,
-    Visible: true,
+    // Visible: true,
     Control: {
         Target: `#monitoring`
     },
@@ -27,12 +27,12 @@ const Monitoring = new Lure.Content ({
                     <div class="timeStep"></div>
                     <div class="chartInfo">
                         <div class="chart"></div>
-                        <div class="activityInfo">Здесь будет отображаться информация об активности</div>
+                        <div class="activityInfo">Выберите модуль для отображения информации</div>
                     </div>
                 </div>`,
 
     Methods() {
-        this.SetData = data => {
+        this.SetPieData = function(data) {
             const pieData = hourData => {
                 const labels = Array.from(hourData.reduce((acc, item) => {
                     acc.add(item.label);
@@ -52,10 +52,23 @@ const Monitoring = new Lure.Content ({
             this._ActivityStats.Redraw();
         };
 
-        this.SetGradient = data => {
+        this.SetGradient = function(data) {
             this.Gradient = this.Select(`.colorGradient`);
             children = statusGradient(data);
             this.Gradient.innerHTML = children.innerHTML;
+        };
+
+        this.SetLogData = function(data) {
+            this.LogTarget = this.Select(`.activityInfo`);
+            this.LogTarget.innerText = ``;
+            for (let hourData of data) {
+                if (hourData.HourValue) {
+                    const logString = document.createElement(`div`);
+                    logString.classList.add(`logString`);
+                    logString.innerText = `${hourData.HourValue}:00: в сети: ${Math.floor(hourData.Online_Count / 60 * 100)}%, количество считываний: ${hourData.OK_Count} количество ошибок: ${hourData.Err_Count}`;
+                    this.LogTarget.appendChild(logString);
+                }
+            }
         }
     },
 
