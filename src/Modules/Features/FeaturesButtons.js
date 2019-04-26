@@ -1,9 +1,7 @@
-const   Buttons = require('../../Data/EquipStats'),
-        data = [1, 2, 8, 4, 5, 7, 4, 5, 15, 20, 14, 19, 17, 15, 15, 13, 11, 18, 19, 16, 12, 10, 14, 16].reverse();
 
 const FeaturesButtons = new Lure.Content ({
     Name: `FeaturesButtons`,
-    Target: `.forButtons`,
+    Target: `.equipDashboard`,
     Content:    `<div class="featuresButtons">
                     <div class="equipName">{{Name}}</div>
                     <div class="f-buttons">

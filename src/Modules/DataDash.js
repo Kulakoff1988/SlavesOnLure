@@ -4,11 +4,15 @@ const DataDash = new Lure.Content ({
     Content:    `<div class="dataDash">
                     <div class="forEqAndFeat">
                         <div class="equipStatus">
-                            <div>
-                                <img src="./img/icon-allChecked.png" alt="test">
-                            </div>
-                            <div>
+                            <div class="chosenName">
+                                <div class="statusIcon">
+                                    <img src="./img/icon-allChecked.png" alt="test">
+                                </div>
                                 <span>{{Name}}</span>
+                            </div>
+                            <div class="filter">
+                                <span>Фильтр даты</span>
+                                <div class="forPeriodPicker"></div>
                             </div>
                         </div>
                     </div>
@@ -20,7 +24,7 @@ const DataDash = new Lure.Content ({
 
     Methods() {
         this.ViewStatus = function (status) {
-            this.State.Name = `${status.equipName}:`;
+            this.State.Name = status.equipName;
             this.State.Status = status.equipStatus;
             this.Proto.Refresh();
         }
@@ -34,10 +38,18 @@ const DataDash = new Lure.Content ({
             this.Target.querySelector(`.features`).classList.add(`forTabDisplay`);
             this.Target.removeChild(this.Target.querySelector(`.features`));
         }
+
+        this._PeriodPicker = new Lure.PeriodPicker({
+            Target: `.forPeriodPicker`,
+            Max: new Date(),
+            OnConfirm: () => {
+                const dates = this._PeriodPicker.Date.map(date => Lure.Date(date).Format(`DD.MM.YYYY`));
+                CheckingBox.State.Date = dates;
+            }
+        });
     }
 });
 
-// require('./DataDash/MainTable');
 require('./DataDash/EquipDashboard');
 window.DataDash = DataDash;
 module.exports = DataDash;
