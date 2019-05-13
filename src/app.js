@@ -1,4 +1,5 @@
 Lure.Application.Run();
+api.Login(`Admin`, `pass2root`);
 require('./Header/Header');
 // require('./Navigator/navigator');
 require('./SideBar/checkingBox');
@@ -11,4 +12,4 @@ require('./SideBar/checkingBox');
 // require('./Modules/Protos');
 // require('./Modules/Trolls');
 require('./Modules/DataDash');
-require('./Modules/Features');
+// require('./Modules/Features');

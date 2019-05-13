@@ -1,9 +1,7 @@
-const   Buttons = require('../../Data/EquipStats'),
-        data = [1, 2, 8, 4, 5, 7, 4, 5, 15, 20, 14, 19, 17, 15, 15, 13, 11, 18, 19, 16, 12, 10, 14, 16].reverse();
 
 const FeaturesButtons = new Lure.Content ({
     Name: `FeaturesButtons`,
-    Target: `.forButtons`,
+    Target: `.equipDashboard`,
     Content:    `<div class="featuresButtons">
                     <div class="equipName">{{Name}}</div>
                     <div class="f-buttons">
@@ -14,7 +12,7 @@ const FeaturesButtons = new Lure.Content ({
                 </div>`,
     State: {
         Name: `Выберите модуль`,
-        CurrentButtons: []
+        CurrentButtons: [],
     },
 
     Methods() {
@@ -22,17 +20,16 @@ const FeaturesButtons = new Lure.Content ({
             this.State.Name = `${status.equipName}:`;
             this.State.CurrentButtons = Buttons.find(el => el.id === status.equipID) ? Buttons.find(el => el.id === status.equipID).value : this.State.CurrentButtons;
             this.Proto.Refresh();
+            this.Buttons = this.SelectAll(`.f-button`);
+            for (let button of this.Buttons) {
+                button.dataset[`id`] = status.equipID;
+            }
         }
     },
 
     AfterBuild() {
         this.AddEventListener(`click`, `.f-button`, e => {
-            Chart.SetData(data);
-            api.Devisces_Get(-1, {
-                Then: res => {
-                    console.log(res);
-                }
-            });
+
         });
     }
 });

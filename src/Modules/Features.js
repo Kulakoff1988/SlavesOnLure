@@ -11,14 +11,13 @@ const Feature = new Lure.Content ({
     AfterBuild() {
         this._PeriodPicker = new Lure.PeriodPicker({
             Target: `.forPeriodPicker`,
+            Max: new Date(),
             OnConfirm: () => {
-                Monitoring.SetData([5, 6, 7, 8])
-            },
-            isTimePicker: false,
-            ForbiddenDates: [new Date()]
-            });
+                const dates = this._PeriodPicker.Date.map(date => Lure.Date(date).Format(`DD.MM.YYYY`));
+                CheckingBox.State.Date = dates;
+            }
+        });
     }
 });
 
-require(`./Features/FeaturesButtons`);
 module.exports = Feature;

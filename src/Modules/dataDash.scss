@@ -12,16 +12,39 @@
 
     .equipStatus {
       display: flex;
-      align-items: center;
+      justify-content: space-around;
       flex: 1;
-      justify-content: flex-start;
       height: 70px;
-      //border-radius: 5px;
       background: antiquewhite;
 
-      span {
-        font-family: 'Arimo', sans-serif;
-        font-style: italic;
+      .chosenName {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 500px;
+
+        span {
+          font-family: 'Arimo', sans-serif;
+          font-style: italic;
+          display: block;
+        }
+      }
+
+      .filter {
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+
+        .forPeriodPicker {
+          align-self: center;
+        }
+
+        span {
+          font-family: 'Arimo', sans-serif;
+          font-style: italic;
+          align-self: center;
+          margin: 10px auto;
+        }
       }
     }
 
@@ -73,12 +96,55 @@
         }
       }
 
-      .chart {
-        width: 98%;
-        height: 90%;
+      .stats {
         display: flex;
-        flex-direction: column;
+        align-items: stretch;
+        flex: 1;
+
+        .forButtons {
+          width: 200px;
+
+          .featuresButtons {
+            margin-top: 20px;
+            font-style: italic;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+
+            .equipName {
+              margin-bottom: 5px;
+              background-color: #793D00;
+              color: white;
+              padding: 10px;
+              //border-radius: 5px;
+              cursor: default;
+            }
+
+            .f-buttons {
+              padding-right: 1px;
+
+              .f-button {
+                margin: 5px auto;
+                border-bottom: 1px solid black;
+                border-top: 1px solid black;
+                //border-radius: 5px;
+                padding: 5px;
+                cursor: pointer;
+              }
+
+              .f-button:hover {
+                background-color: #C0602F;
+                color: #fff0f0;
+              }
+            }
+          }
         }
+
+        .chart {
+          width: 90%;
+          height: 98%;
+        }
+      }
       }
 
       .monitoring {
@@ -88,11 +154,35 @@
         flex: 1;
 
         .colorGradient {
-          height: 20px;
-          background: #00c100;
+          height: 50px;
           display: flex;
           justify-content: space-between;
           margin-bottom: 5px;
+          align-items: stretch;
+
+          div {
+            flex: 1;
+          }
+
+          .inactive {
+            background: $inactive;
+          }
+
+          .noErrors {
+            background: $noErrors;
+          }
+
+          .moreSuccess {
+            background: $moreSuccess;
+          }
+
+          .moreErrors {
+            background: $moreErrors;
+          }
+
+          .noSuccess {
+            background: $noSuccess;
+          }
         }
 
         .timeStep {
@@ -120,12 +210,28 @@
 
           .activityInfo {
             width: 55%;
-            padding-top: 250px;
-            background: #00ECFF;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+            //border: 1px solid black;
+            padding: 5px;
+
+            .logString {
+              margin-top: 5px;
+              margin-bottom: 5px;
+
+              &:nth-child(2n) {
+                background: #00ECFF;
+              }
+              //&:nth-child(2n - 1) {
+              //  background: #00c100;
+              //}
+            }
           }
         }
 
       .forEquipInfo {
+        background: antiquewhite;
         display: flex;
         flex-direction: column;
         align-items: center;
