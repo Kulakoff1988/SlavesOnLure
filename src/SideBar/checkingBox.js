@@ -38,7 +38,7 @@ addBranch = tree => {
 const CheckingBox = new Lure.Content ({
     Name: `CheckingBox`,
     Target: `.body`,
-    Content:    `<div id="checkingBox"></div>`,
+    Content: `<div id="checkingBox"></div>`,
     State: {
         Tree: selectList
     },

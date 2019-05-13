@@ -37,5 +37,9 @@
     "popper.js": "^1.14.7",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "g": "^2.0.1",
+    "node-sass": "^4.11.0"
   }
 }
